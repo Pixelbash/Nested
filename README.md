@@ -1,15 +1,9 @@
 # Nested
+Forked from [Jonas Blomdin](http://github.com/jonasblomdin/)
 
-jQuery Nested plugin for a gap free, multi column grid layout experience.
-<br>Demo: [http://suprb.com/apps/nested/](http://suprb.com/apps/nested/)
-
-#### Contributor
-
-[Jonas Blomdin](http://github.com/jonasblomdin/)
-
-#### Compare the result
-
-Nested to the left and Grid-A-Licious/Masonry to the right.
-
-!["compare"](https://dl.dropbox.com/u/35476/compare.jpg)
-
+## Notes
+- Removed demo files
+- example.css only contains transition
+- Added overlapping box fix (so 6 wide & greater than 6 high works)
+- New attribute for eg data-size="12x12" because the ".size12" regex was limited
+- Attempting to implement filtering
