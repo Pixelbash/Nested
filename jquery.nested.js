@@ -122,21 +122,22 @@ if (!Object.keys) {
             $els = this.box.find(this.options.selector);
 
             $.each($els, function () {
+                var dim = $(this).attr('data-size').split('x');
+                var x = (typeof(dim[0]) === 'undefined') ? 1 : parseFloat(dim[0]);
+                var y = (typeof(dim[1]) === 'undefined') ? 1 : parseFloat(dim[1])
 
-                var dim = parseInt($(this).attr('class').replace(/^.*size([0-9]+).*$/, '$1')).toString().split('');
-                var x = (dim[0] == "N") ? 1 : parseFloat(dim[0]);
-                var y = (dim[1] == "a") ? 1 : parseFloat(dim[1]);
-
-                var currWidth = minWidth * x + gutter * (x - 1);
+                var currWidth  = minWidth * x + gutter * (x - 1);
                 var currHeight = minWidth * y + gutter * (y - 1);
 
+               // console.log(currHeight);
+
                 $(this).css({
-                    'display': display,
-                    'position': 'absolute',
-                    'width': currWidth,
-                    'height': currHeight,
-                    'top': $(this).position().top,
-                    'left': $(this).position().left
+                    'display'  : display,
+                    'position' : 'absolute',
+                    'width'    : currWidth,
+                    'height'   : currHeight,
+                    'top'      : $(this).position().top,
+                    'left'    : $(this).position().left
                 }).removeClass('nested-moved').attr('data-box', self.idCounter).attr('data-width', currWidth);
 
                 self.idCounter++;
@@ -293,7 +294,7 @@ if (!Object.keys) {
 
             while (true) {
 
-                for (var y = col; y >= 0; y--) {
+                for (var y = row; y >= 0; y--) {
                     if (this.gridrow[gridy + y]) break;
                     this.gridrow[gridy + y] = new Object;
                     for (var x = 0; x < this.columns; x++) {
@@ -417,9 +418,9 @@ if (!Object.keys) {
 
             $.each($els, function (index, value) {
 
-                $currLeft = $(value['$el']).position().left;
-                $currTop = $(value['$el']).position().top;
-                $currWidth = $(value['$el']).width();
+                $currLeft   = $(value['$el']).position().left;
+                $currTop    = $(value['$el']).position().top;
+                $currWidth  = $(value['$el']).width();
                 $currHeight = $(value['$el']).width();
 
                 value['$el'].attr('data-y', $currTop).attr('data-x', $currLeft);
